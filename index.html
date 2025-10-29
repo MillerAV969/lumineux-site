@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINEUX — Световое искусство премиум-класса</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold: #D4AF37; --dark: #0F0F0F; --light-dark: #1A1A1A; --white: #FFFFFF; --gray: #888888; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--white); line-height: 1.8; font-weight: 300; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+        
+        .ornament { position: fixed; border-radius: 50%; opacity: 0.08; pointer-events: none; z-index: 1; animation: float 20s ease-in-out infinite; }
+        .orn1 { width: 120px; height: 120px; background: radial-gradient(circle at 35% 35%, var(--gold), #8B7000); top: 10%; right: 5%; }
+        .orn2 { width: 90px; height: 90px; background: radial-gradient(circle at 35% 35%, #C0C0C0, #707070); bottom: 15%; left: 8%; animation-delay: 7s; }
+        .orn3 { width: 70px; height: 70px; background: radial-gradient(circle at 35% 35%, var(--gold), #8B7000); top: 50%; left: 3%; animation-delay: 14s; }
+        @keyframes float { 0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; } 50% { transform: translate(-30px, -40px) rotate(180deg); opacity: 0.12; } }
+        
+        header { position: fixed; top: 0; left: 0; right: 0; background: rgba(15, 15, 15, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(212, 175, 55, 0.1); z-index: 100; padding: 30px 0; transition: all 0.3s ease; }
+        header.scrolled { padding: 20px 0; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); }
+        .header-content { max-width: 1400px; margin: 0 auto; padding: 0 50px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 24px; letter-spacing: 3px; color: var(--gold); font-weight: 600; text-transform: uppercase; }
+        .header-phone { font-size: 18px; color: var(--white); text-decoration: none; letter-spacing: 1px; transition: color 0.3s ease; }
+        .header-phone:hover { color: var(--gold); }
+        
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: linear-gradient(180deg, rgba(15, 15, 15, 0.7) 0%, rgba(26, 26, 26, 0.8) 100%), url('bg-hero.jpg') center/cover; position: relative; z-index: 2; padding: 120px 20px 80px; }
+        .hero h1 { font-size: clamp(36px, 6vw, 72px); margin-bottom: 30px; line-height: 1.2; text-shadow: 0 4px 20px rgba(0,0,0,0.7); }
+        .hero-subtitle { font-size: clamp(16px, 2vw, 24px); color: var(--gray); margin-bottom: 50px; letter-spacing: 1px; text-shadow: 0 2px 10px rgba(0,0,0,0.7); }
+        
+        .cta-button { display: inline-block; padding: 20px 60px; background: transparent; border: 2px solid var(--gold); color: var(--gold); font-size: 14px; letter-spacing: 3px; text-transform: uppercase; text-decoration: none; transition: all 0.4s ease; font-weight: 500; }
+        .cta-button:hover { background: var(--gold); color: var(--dark); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+        
+        .visualizer-cta { padding: 80px 50px; background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(15, 15, 15, 0.85) 100%), url('bg-visualizer.jpg') center/cover; position: relative; z-index: 2; border-top: 1px solid rgba(212, 175, 55, 0.1); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        .visualizer-box { max-width: 900px; margin: 0 auto; text-align: center; padding: 60px 40px; border: 2px solid rgba(212, 175, 55, 0.2); background: rgba(26, 26, 26, 0.7); backdrop-filter: blur(10px); }
+        .visualizer-icon { font-size: 64px; margin-bottom: 30px; }
+        .visualizer-title { font-size: clamp(28px, 4vw, 42px); color: var(--white); margin-bottom: 20px; }
+        .visualizer-subtitle { font-size: 18px; color: var(--gray); margin-bottom: 15px; }
+        .visualizer-features { list-style: none; margin: 30px 0; padding: 0; }
+        .visualizer-features li { font-size: 16px; color: var(--gray); margin: 12px 0; }
+        .visualizer-features li::before { content: "✨"; margin-right: 10px; }
+        .visualizer-note { font-size: 14px; color: var(--gray); font-style: italic; margin-top: 20px; }
+        
+        .packages { padding: 120px 50px; background: linear-gradient(135deg, rgba(15, 15, 15, 0.8) 0%, rgba(26, 26, 26, 0.8) 100%), url('bg-packages.jpg') center/cover; background-attachment: fixed; position: relative; z-index: 2; }
+        .section-title { text-align: center; font-size: clamp(36px, 5vw, 54px); margin-bottom: 20px; }
+        .section-subtitle { text-align: center; font-size: clamp(14px, 2vw, 18px); color: var(--gray); margin-bottom: 80px; letter-spacing: 1px; }
+        .packages-container { max-width: 1400px; margin: 0 auto; }
+        .package { margin-bottom: 120px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .package:nth-child(even) .package-image-container { order: 2; }
+        .package:nth-child(even) .package-content { order: 1; }
+        .package-image-container { position: relative; overflow: hidden; aspect-ratio: 4/3; border-radius: 4px; }
+        .package-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; background: var(--light-dark); display: block; }
+        .package:hover .package-image { transform: scale(1.05); }
+        .package-content { padding: 20px; background: rgba(26, 26, 26, 0.6); backdrop-filter: blur(10px); border-radius: 4px; }
+        .package-tag { display: inline-block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+        .package-name { font-size: clamp(32px, 4vw, 42px); margin-bottom: 20px; }
+        .package-price { font-size: clamp(22px, 3vw, 28px); color: var(--gold); margin-bottom: 25px; }
+        .package-description { font-size: 16px; color: var(--gray); margin-bottom: 35px; }
+        .package-features { list-style: none; margin-bottom: 30px; }
+        .package-features li { padding: 12px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: var(--gray); font-size: 15px; }
+        .package-features li::before { content: "—"; color: var(--gold); margin-right: 15px; }
+        .package-duration { font-size: 14px; color: var(--gray); font-style: italic; margin-top: 20px; }
+        .package-bonus { display: inline-block; margin-top: 20px; padding: 10px 20px; border: 1px solid var(--gold); color: var(--gold); font-size: 12px; }
+        
+        .try-on-button { display: inline-block; margin-top: 25px; padding: 15px 40px; background: transparent; border: 2px solid var(--gold); color: var(--gold); font-size: 13px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all 0.4s ease; cursor: pointer; }
+        .try-on-button:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); }
+        .try-on-button::before { content: "🎨 "; margin-right: 8px; }
+        
+        .advantages { padding: 120px 50px; background: linear-gradient(135deg, rgba(26, 26, 26, 0.85) 0%, rgba(15, 15, 15, 0.85) 100%), url('bg-advantages.jpg') center/cover; position: relative; z-index: 2; }
+        .advantages-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .advantage { text-align: center; padding: 30px 20px; background: rgba(26, 26, 26, 0.5); backdrop-filter: blur(10px); border-radius: 4px; }
+        .advantage-number { font-size: 64px; color: var(--gold); opacity: 0.15; font-family: 'Playfair Display', serif; margin-bottom: 20px; }
+        .advantage h3 { font-size: 20px; margin-bottom: 12px; }
+        .advantage p { font-size: 14px; color: var(--gray); }
+        
+        .visualizer-section { padding: 120px 50px; background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), url('bg-form.jpg') center/cover; position: relative; z-index: 2; }
+        .visualizer-form-container { max-width: 700px; margin: 0 auto; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(15px); padding: 60px 50px; border: 2px solid rgba(212, 175, 55, 0.2); }
+        .form-group { margin-bottom: 30px; }
+        label { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+        input, select, textarea { width: 100%; padding: 18px 20px; background: rgba(15, 15, 15, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--white); font-size: 16px; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); background: rgba(15, 15, 15, 0.9); }
+        textarea { resize: vertical; min-height: 140px; }
+        
+        .file-upload { position: relative; overflow: hidden; display: inline-block; width: 100%; }
+        .file-upload input[type=file] { position: absolute; left: -9999px; }
+        .file-upload-label { display: block; padding: 18px 20px; background: rgba(15, 15, 15, 0.8); border: 2px dashed rgba(212, 175, 55, 0.3); color: var(--gray); text-align: center; cursor: pointer; transition: all 0.3s ease; }
+        .file-upload-label:hover { border-color: var(--gold); color: var(--gold); }
+        .file-upload-label::before { content: "📸 "; font-size: 24px; display: block; margin-bottom: 10px; }
+        
+        .submit-button { width: 100%; padding: 22px; background: transparent; border: 2px solid var(--gold); color: var(--gold); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; font-family: 'Inter', sans-serif; }
+        .submit-button:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
+        
+        .contact-section { padding: 120px 50px; background: rgba(26, 26, 26, 0.95); position: relative; z-index: 2; }
+        .contact-container { max-width: 700px; margin: 0 auto; }
+        
+        footer { padding: 80px 50px; background: rgba(15, 15, 15, 0.98); text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.1); }
+        .footer-content { max-width: 600px; margin: 0 auto; }
+        .footer-contact p { font-size: 16px; color: var(--gray); margin-bottom: 12px; }
+        .footer-contact a { color: var(--gold); text-decoration: none; transition: opacity 0.3s ease; }
+        .footer-contact a:hover { opacity: 0.7; }
+        .footer-divider { width: 80px; height: 1px; background: var(--gold); margin: 40px auto; opacity: 0.3; }
+        .footer-copy { font-size: 11px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
+        
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); padding: 20px; }
+        .modal.active { display: flex; align-items: center; justify-content: center; }
+        .modal-content { background: var(--light-dark); padding: 40px; max-width: 600px; width: 100%; position: relative; border: 2px solid rgba(212, 175, 55, 0.2); }
+        .close-modal { position: absolute; right: 20px; top: 20px; font-size: 32px; color: var(--gray); cursor: pointer; transition: color 0.3s ease; }
+        .close-modal:hover { color: var(--gold); }
+        
+        @media (max-width: 1024px) {
+            .package { grid-template-columns: 1fr; gap: 40px; }
+            .package:nth-child(even) .package-image-container, .package:nth-child(even) .package-content { order: initial; }
+        }
+        @media (max-width: 768px) {
+            .header-content { padding: 0 25px; }
+            .hero, .packages, .advantages, .visualizer-cta, .visualizer-section, .contact-section, footer { padding-left: 25px; padding-right: 25px; }
+            .advantages-grid { grid-template-columns: 1fr; gap: 40px; }
+            .visualizer-box { padding: 40px 25px; }
+            .visualizer-form-container { padding: 40px 25px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="ornament orn1"></div>
+    <div class="ornament orn2"></div>
+    <div class="ornament orn3"></div>
+
+    <header id="mainHeader">
+        <div class="header-content">
+            <div class="logo">Lumineux</div>
+            <a href="tel:+79939665243" class="header-phone">+7 (993) 966-52-43</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Световое искусство<br>премиум-класса</h1>
+            <p class="hero-subtitle">Эксклюзивное новогоднее оформление<br>загородных резиденций</p>
+            <a href="#contact" class="cta-button">Оставить заявку</a>
+        </div>
+    </section>
+
+    <section class="visualizer-cta">
+        <div class="visualizer-box">
+            <div class="visualizer-icon">🏠</div>
+            <h2 class="visualizer-title">Хотите посмотреть, как это будет<br>смотреться на вашем доме?</h2>
+            <p class="visualizer-subtitle">Получите бесплатную персональную визуализацию</p>
+            <ul class="visualizer-features">
+                <li>Загрузите фото вашего дома</li>
+                <li>Мы создадим 3 варианта оформления в выбранном пакете</li>
+                <li>Отправим на email в течение 2-4 часов</li>
+            </ul>
+            <a href="#visualizer" class="cta-button">Примерить оформление</a>
+            <p class="visualizer-note">Это бесплатно и ни к чему не обязывает</p>
+        </div>
+    </section>
+    <section class="packages">
+        <h2 class="section-title">Коллекции</h2>
+        <p class="section-subtitle">Индивидуальные решения для каждой резиденции</p>
+        
+        <div class="packages-container">
+            <div class="package">
+                <div class="package-image-container">
+                    <img src="base-package-final.jpg" alt="Базовое оформление" class="package-image">
+                </div>
+                <div class="package-content">
+                    <span class="package-tag">Essential</span>
+                    <h3 class="package-name">Базовый</h3>
+                    <div class="package-price">от 268 812 ₽</div>
+                    <p class="package-description">Элегантное световое оформление фасада с профессиональными гирляндами премиум-класса.</p>
+                    <ul class="package-features">
+                        <li>Контурная подсветка фасада</li>
+                        <li>Оформление входной группы</li>
+                        <li>Подсветка дерева</li>
+                        <li>Межсезонное хранение</li>
+                        <li>Демонтаж включен</li>
+                    </ul>
+                    <div class="package-duration">Монтаж: 1 день</div>
+                    <a href="#visualizer" class="try-on-button" onclick="selectPackage('Базовый')">Примерить</a>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="package-image-container">
+                    <img src="premium-package-v2.jpg" alt="Комфорт" class="package-image">
+                </div>
+                <div class="package-content">
+                    <span class="package-tag">Comfort</span>
+                    <h3 class="package-name">Комфорт</h3>
+                    <div class="package-price">от 550 000 ₽</div>
+                    <p class="package-description">Расширенное оформление территории с профессиональными световыми решениями.</p>
+                    <ul class="package-features">
+                        <li>Оформление фасада с бахромой</li>
+                        <li>Подсветка входной зоны</li>
+                        <li>Подсветка 2-3 деревьев</li>
+                        <li>Световые элементы</li>
+                        <li>Межсезонное хранение</li>
+                    </ul>
+                    <div class="package-duration">Монтаж: 1-2 дня</div>
+                    <a href="#visualizer" class="try-on-button" onclick="selectPackage('Комфорт')">Примерить</a>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="package-image-container">
+                    <img src="premium-package-v2.jpg" alt="Премиум" class="package-image">
+                </div>
+                <div class="package-content">
+                    <span class="package-tag">Premium</span>
+                    <h3 class="package-name">Премиум</h3>
+                    <div class="package-price">от 1 012 000 ₽</div>
+                    <p class="package-description">Комплексное архитектурное освещение с профессиональным световым дизайном.</p>
+                    <ul class="package-features">
+                        <li>Архитектурная подсветка</li>
+                        <li>LED-композиции</li>
+                        <li>Подсветка 3-5 деревьев</li>
+                        <li>Световые фигуры</li>
+                        <li>Проекционное оборудование</li>
+                        <li>Межсезонное хранение</li>
+                    </ul>
+                    <div class="package-duration">Монтаж: 1-2 дня</div>
+                    <div class="package-bonus">Дизайн-проект включен</div>
+                    <a href="#visualizer" class="try-on-button" onclick="selectPackage('Премиум')">Примерить</a>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="package-image-container">
+                    <img src="exclusive-package-v2.jpg" alt="Эксклюзив" class="package-image">
+                </div>
+                <div class="package-content">
+                    <span class="package-tag">Exclusive</span>
+                    <h3 class="package-name">Эксклюзив</h3>
+                    <div class="package-price">от 2 150 500 ₽</div>
+                    <p class="package-description">Индивидуальный световой дизайн с применением инновационных технологий.</p>
+                    <ul class="package-features">
+                        <li>Персональный дизайн-проект</li>
+                        <li>LED-неон по эскизу</li>
+                        <li>3D световые инсталляции</li>
+                        <li>Видеопроекция на фасад</li>
+                        <li>Умное управление</li>
+                        <li>VIP-обслуживание</li>
+                    </ul>
+                    <div class="package-duration">Монтаж: 2-3 дня</div>
+                    <div class="package-bonus">Профессиональная фотосессия</div>
+                    <a href="#visualizer" class="try-on-button" onclick="selectPackage('Эксклюзив')">Примерить</a>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="package-image-container">
+                    <img src="elite-only-package.jpg" alt="Для избранных" class="package-image">
+                </div>
+                <div class="package-content">
+                    <span class="package-tag">For The Few</span>
+                    <h3 class="package-name">Только для избранных</h3>
+                    <div class="package-price">от 6 325 000 ₽</div>
+                    <p class="package-description">Эксклюзивное оформление с монументальной световой ёлкой 12 метров.</p>
+                    <ul class="package-features">
+                        <li>Полный комплекс Эксклюзив</li>
+                        <li>Каркасная ёлка 12 метров</li>
+                        <li>Программируемые эффекты</li>
+                        <li>Межсезонное хранение</li>
+                    </ul>
+                    <div class="package-duration">Монтаж: 3-5 дней</div>
+                    <div class="package-bonus">Фотосессия включена</div>
+                    <a href="#visualizer" class="try-on-button" onclick="selectPackage('Только для избранных')">Примерить</a>
+                </div>
+            </div>
+
+            <div class="package">
+                <div class="package-image-container">
+                    <img src="residence-final.jpg" alt="Резиденция" class="package-image">
+                </div>
+                <div class="package-content">
+                    <span class="package-tag">Masterpiece</span>
+                    <h3 class="package-name">Резиденция</h3>
+                    <div class="package-price">от 12 650 000 ₽</div>
+                    <p class="package-description">Максимальный уровень светового искусства с грандиозной ёлкой 18 метров.</p>
+                    <ul class="package-features">
+                        <li>Полный комплекс Эксклюзив</li>
+                        <li>Каркасная ёлка 18 метров</li>
+                        <li>Установка спецтехникой</li>
+                        <li>Профессиональная аэросъёмка</li>
+                        <li>Межсезонное хранение</li>
+                    </ul>
+                    <div class="package-duration">Монтаж: 5-7 дней</div>
+                    <div class="package-bonus">Фотосессия + видеосъёмка</div>
+                    <a href="#visualizer" class="try-on-button" onclick="selectPackage('Резиденция')">Примерить</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <h2 class="section-title">Наши принципы</h2>
+        <p class="section-subtitle">Безупречное качество и внимание к деталям</p>
+        <div class="advantages-grid">
+            <div class="advantage">
+                <div class="advantage-number">01</div>
+                <h3>Профессионализм</h3>
+                <p>Сертифицированные специалисты с многолетним опытом</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-number">02</div>
+                <h3>Качество</h3>
+                <p>Оборудование IP65/IP67 европейского производства</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-number">03</div>
+                <h3>Сервис</h3>
+                <p>Техническое обслуживание и гарантия до февраля</p>
+            </div>
+            <div class="advantage">
+                <div class="advantage-number">04</div>
+                <h3>Полный цикл</h3>
+                <p>От проекта до демонтажа и хранения</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="visualizer-section" id="visualizer">
+        <div class="visualizer-form-container">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 15px;">Примерьте оформление</h2>
+            <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Загрузите фото вашего дома и получите 3 варианта визуализации</p>
+            
+            <form id="visualizerForm" name="visualization" method="POST" action="https://formspree.io/f/xzbqwnvy" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="photo">Фото вашего дома *</label>
+                    <div class="file-upload">
+                        <input type="file" id="photo" name="photo" accept="image/*" capture="environment" required>
+                        <label for="photo" class="file-upload-label" id="fileLabel">Загрузите фото или сделайте снимок</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="viz-name">Имя *</label>
+                    <input type="text" id="viz-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="viz-phone">Телефон *</label>
+                    <input type="tel" id="viz-phone" name="phone" value="+7" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="viz-email">Email *</label>
+                    <input type="email" id="viz-email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="viz-package">Интересующий пакет *</label>
+                    <select id="viz-package" name="package" required>
+                        <option value="">Выберите пакет</option>
+                        <option value="Базовый">Базовый (от 268 812 ₽)</option>
+                        <option value="Комфорт">Комфорт (от 550 000 ₽)</option>
+                        <option value="Премиум">Премиум (от 1 012 000 ₽)</option>
+                        <option value="Эксклюзив">Эксклюзив (от 2 150 500 ₽)</option>
+                        <option value="Только для избранных">Только для избранных (от 6 325 000 ₽)</option>
+                        <option value="Резиденция">Резиденция (от 12 650 000 ₽)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="viz-comment">Комментарий</label>
+                    <textarea id="viz-comment" name="comment" placeholder="Особенности дома, пожелания..."></textarea>
+                </div>
+                
+                <input type="hidden" name="_cc" value="sk-optima.stroy@mail.ru">
+                <button type="submit" class="submit-button">Получить визуализацию бесплатно</button>
+            </form>
+        </div>
+    </section>
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Консультация</h2>
+            <p class="section-subtitle">Оставьте заявку и получите индивидуальное предложение</p>
+            
+            <form id="contactForm" name="contact" method="POST" action="https://formspree.io/f/xzbqwnvy">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone" value="+7" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="address">Адрес объекта</label>
+                    <input type="text" id="address" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="package">Интересующая коллекция</label>
+                    <select id="package" name="package">
+                        <option value="basic">Базовый (от 268 812 ₽)</option>
+                        <option value="comfort">Комфорт (от 550 000 ₽)</option>
+                        <option value="premium">Премиум (от 1 012 000 ₽)</option>
+                        <option value="exclusive">Эксклюзив (от 2 150 500 ₽)</option>
+                        <option value="elite">Только для избранных (от 6 325 000 ₽)</option>
+                        <option value="residence">Резиденция (от 12 650 000 ₽)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарий</label>
+                    <textarea id="comment" name="comment"></textarea>
+                </div>
+                <input type="hidden" name="_cc" value="sk-optima.stroy@mail.ru">
+                <button type="submit" class="submit-button">Отправить заявку</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-contact">
+                <p><a href="tel:+79939665243">+7 (993) 966-52-43</a></p>
+                <p><a href="mailto:sk-optima.stroy@mail.ru">sk-optima.stroy@mail.ru</a></p>
+                <p>9:00 — 21:00, без выходных</p>
+            </div>
+            <div class="footer-divider"></div>
+            <p class="footer-copy">© 2025 Lumineux</p>
+        </div>
+    </footer>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--gold); margin-bottom: 20px;">Спасибо!</h2>
+            <p style="color: var(--gray); line-height: 1.8;">
+                Мы получили фото вашего дома и приступаем к работе.<br><br>
+                Вы получите 3 варианта визуализации на email в течение 2-4 часов 
+                вместе с персональным предложением.<br><br>
+                Наш менеджер также свяжется с вами по телефону.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('mainHeader');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        document.getElementById('photo').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || 'Загрузите фото или сделайте снимок';
+            document.getElementById('fileLabel').innerHTML = '✓ ' + fileName;
+        });
+
+        function selectPackage(packageName) {
+            document.getElementById('viz-package').value = packageName;
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.remove('active');
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('mainHeader').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
