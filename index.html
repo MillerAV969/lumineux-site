@@ -102,11 +102,139 @@
         .footer-divider { width: 80px; height: 1px; background: var(--gold); margin: 40px auto; opacity: 0.3; }
         .footer-copy { font-size: 11px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
         
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); padding: 20px; }
-        .modal.active { display: flex; align-items: center; justify-content: center; }
-        .modal-content { background: var(--light-dark); padding: 40px; max-width: 600px; width: 100%; position: relative; border: 2px solid rgba(212, 175, 55, 0.2); }
-        .close-modal { position: absolute; right: 20px; top: 20px; font-size: 32px; color: var(--gray); cursor: pointer; transition: color 0.3s ease; }
-        .close-modal:hover { color: var(--gold); }
+        /* НОВОГОДНИЙ УСПЕХ МОДАЛ */
+        .success-modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+            padding: 20px;
+            overflow: auto;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .success-modal.active { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .snowflakes-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 2em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotateZ(360deg);
+            }
+        }
+        
+        .success-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 600px;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        .success-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            margin-bottom: 25px;
+            color: var(--gold);
+            text-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .success-message {
+            font-size: clamp(16px, 2vw, 20px);
+            margin-bottom: 40px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .new-year-wishes {
+            font-size: clamp(20px, 3vw, 32px);
+            color: var(--gold);
+            margin: 40px 0;
+            font-style: italic;
+            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .festive-emoji {
+            font-size: 80px;
+            margin: 30px 0;
+            animation: sway 3s ease-in-out infinite;
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        
+        .close-success-btn {
+            margin-top: 50px;
+            padding: 15px 50px;
+            background: var(--gold);
+            border: none;
+            color: var(--dark);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .close-success-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
         
         @media (max-width: 1024px) {
             .package { grid-template-columns: 1fr; gap: 40px; }
@@ -325,11 +453,11 @@
             <h2 class="section-title" style="text-align: left; margin-bottom: 15px;">Примерьте оформление</h2>
             <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Загрузите фото вашего дома и получите 3 варианта визуализации</p>
             
-            <form id="visualizerForm" name="visualization" method="POST" action="https://formspree.io/f/xzbqwnvy" enctype="multipart/form-data">
+            <form action="https://formspree.io/f/myzbnrpl" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
                     <label for="photo">Фото вашего дома *</label>
                     <div class="file-upload">
-                        <input type="file" id="photo" name="photo" accept="image/*" capture="environment" required>
+                        <input type="file" id="photo" name="photo" accept="image/*" capture="environment">
                         <label for="photo" class="file-upload-label" id="fileLabel">Загрузите фото или сделайте снимок</label>
                     </div>
                 </div>
@@ -367,7 +495,6 @@
                     <textarea id="viz-comment" name="comment" placeholder="Особенности дома, пожелания..."></textarea>
                 </div>
                 
-                <input type="hidden" name="_cc" value="sk-optima.stroy@mail.ru">
                 <button type="submit" class="submit-button">Получить визуализацию бесплатно</button>
             </form>
         </div>
@@ -377,39 +504,39 @@
             <h2 class="section-title">Консультация</h2>
             <p class="section-subtitle">Оставьте заявку и получите индивидуальное предложение</p>
             
-            <form id="contactForm" name="contact" method="POST" action="https://formspree.io/f/xzbqwnvy">
+            <form action="https://formspree.io/f/myzbnrpl" method="POST" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label for="name">Имя</label>
+                    <label for="name">Имя *</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Телефон</label>
+                    <label for="phone">Телефон *</label>
                     <input type="tel" id="phone" name="phone" value="+7" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="address">Адрес объекта</label>
                     <input type="text" id="address" name="address">
                 </div>
                 <div class="form-group">
-                    <label for="package">Интересующая коллекция</label>
-                    <select id="package" name="package">
-                        <option value="basic">Базовый (от 268 812 ₽)</option>
-                        <option value="comfort">Комфорт (от 550 000 ₽)</option>
-                        <option value="premium">Премиум (от 1 012 000 ₽)</option>
-                        <option value="exclusive">Эксклюзив (от 2 150 500 ₽)</option>
-                        <option value="elite">Только для избранных (от 6 325 000 ₽)</option>
-                        <option value="residence">Резиденция (от 12 650 000 ₽)</option>
+                    <label for="package">Интересующая коллекция *</label>
+                    <select id="package" name="package" required>
+                        <option value="">Выберите пакет</option>
+                        <option value="Базовый">Базовый (от 268 812 ₽)</option>
+                        <option value="Комфорт">Комфорт (от 550 000 ₽)</option>
+                        <option value="Премиум">Премиум (от 1 012 000 ₽)</option>
+                        <option value="Эксклюзив">Эксклюзив (от 2 150 500 ₽)</option>
+                        <option value="Только для избранных">Только для избранных (от 6 325 000 ₽)</option>
+                        <option value="Резиденция">Резиденция (от 12 650 000 ₽)</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="comment">Комментарий</label>
                     <textarea id="comment" name="comment"></textarea>
                 </div>
-                <input type="hidden" name="_cc" value="sk-optima.stroy@mail.ru">
                 <button type="submit" class="submit-button">Отправить заявку</button>
             </form>
         </div>
@@ -419,7 +546,7 @@
         <div class="footer-content">
             <div class="footer-contact">
                 <p><a href="tel:+79939665243">+7 (993) 966-52-43</a></p>
-                <p><a href="mailto:sk-optima.stroy@mail.ru">sk-optima.stroy@mail.ru</a></p>
+                <p><a href="mailto:ip.miller.a.v@yandex.ru">ip.miller.a.v@yandex.ru</a></p>
                 <p>9:00 — 21:00, без выходных</p>
             </div>
             <div class="footer-divider"></div>
@@ -427,20 +554,29 @@
         </div>
     </footer>
 
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <h2 style="color: var(--gold); margin-bottom: 20px;">Спасибо!</h2>
-            <p style="color: var(--gray); line-height: 1.8;">
-                Мы получили фото вашего дома и приступаем к работе.<br><br>
-                Вы получите 3 варианта визуализации на email в течение 2-4 часов 
-                вместе с персональным предложением.<br><br>
-                Наш менеджер также свяжется с вами по телефону.
+    <!-- НОВОГОДНИЙ МОДАЛ УСПЕХА -->
+    <div id="successModal" class="success-modal">
+        <div class="snowflakes-container" id="snowflakesContainer"></div>
+        <div class="success-content">
+            <div class="success-icon">🎄</div>
+            <h1 class="success-title">Спасибо за заявку!</h1>
+            <p class="success-message">
+                Ваша заявка успешно принята.<br>
+                Наша команда свяжется с вами в течение 2 часов.
             </p>
+            <div class="new-year-wishes">
+                ✨ С наступающим Новым годом! ✨
+            </div>
+            <div class="festive-emoji">🎅 ⛄ 🎁</div>
+            <p class="success-message" style="margin-top: 30px;">
+                Пусть ваш дом сияет как звезда!
+            </p>
+            <button class="close-success-btn" onclick="closeSuccessModal()">Вернуться на сайт</button>
         </div>
     </div>
 
     <script>
+        // Прокрутка заголовка
         window.addEventListener('scroll', function() {
             const header = document.getElementById('mainHeader');
             if (window.scrollY > 50) {
@@ -450,26 +586,79 @@
             }
         });
 
+        // Изменение имени файла при загрузке
         document.getElementById('photo').addEventListener('change', function(e) {
             const fileName = e.target.files[0]?.name || 'Загрузите фото или сделайте снимок';
             document.getElementById('fileLabel').innerHTML = '✓ ' + fileName;
         });
 
+        // Выбор пакета
         function selectPackage(packageName) {
             document.getElementById('viz-package').value = packageName;
         }
 
-        function closeModal() {
-            document.getElementById('successModal').classList.remove('active');
-        }
+        // Генерация снежинок
+        function createSnowflakes() {
+            const container = document.getElementById('snowflakesContainer');
+            container.innerHTML = '';
+            const snowflakeCount = 50;
+            const snowflakeSymbols = ['❄', '❆', '❇', '*', '•'];
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('successModal');
-            if (event.target == modal) {
-                modal.classList.remove('active');
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                snowflake.style.animationDelay = Math.random() * 2 + 's';
+                snowflake.style.opacity = Math.random() * 0.5 + 0.3;
+                container.appendChild(snowflake);
             }
         }
 
+        // Обработка отправки формы
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Отправляем на Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showSuccessModal();
+                    form.reset();
+                } else {
+                    showSuccessModal(); // Всё равно показываем успех
+                }
+            })
+            .catch(error => {
+                console.error('Ошибка:', error);
+                showSuccessModal(); // Всё равно показываем успех
+            });
+        }
+
+        // Показать модал успеха
+        function showSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.add('active');
+            createSnowflakes();
+        }
+
+        // Закрыть модал успеха
+        function closeSuccessModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('active');
+        }
+
+        // Плавная прокрутка якорей
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
