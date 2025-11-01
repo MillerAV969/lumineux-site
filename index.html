@@ -88,6 +88,45 @@
         .file-upload-label:hover { border-color: var(--gold); color: var(--gold); }
         .file-upload-label::before { content: "📸 "; font-size: 24px; display: block; margin-bottom: 10px; }
         
+        .file-note {
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 10px;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .whatsapp-alternative {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .whatsapp-alternative p {
+            color: var(--gray);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        
+        .whatsapp-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-link:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+        
         .submit-button { width: 100%; padding: 22px; background: transparent; border: 2px solid var(--gold); color: var(--gold); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; font-family: 'Inter', sans-serif; }
         .submit-button:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
         
@@ -283,6 +322,7 @@
             <p class="visualizer-note">Это бесплатно и ни к чему не обязывает</p>
         </div>
     </section>
+
     <section class="packages">
         <h2 class="section-title">Коллекции</h2>
         <p class="section-subtitle">Индивидуальные решения для каждой резиденции</p>
@@ -453,12 +493,17 @@
             <h2 class="section-title" style="text-align: left; margin-bottom: 15px;">Примерьте оформление</h2>
             <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Загрузите фото вашего дома и получите 3 варианта визуализации</p>
             
-            <form action="https://formspree.io/f/myzbnrpl" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+            <form action="https://formspree.io/f/myzbnrpl" method="POST" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label for="photo">Фото вашего дома</label>
+                    <label for="photo">Фото вашего дома (необязательно)</label>
                     <div class="file-upload">
-                        <input type="file" id="photo" name="attachment" accept="image/*" capture="environment">
-                        <label for="photo" class="file-upload-label" id="fileLabel">Загрузите фото или сделайте снимок</label>
+                        <input type="file" id="photo" name="photo_link" accept="image/*">
+                        <label for="photo" class="file-upload-label" id="fileLabel">Выберите фото (Камера или Галерея)</label>
+                    </div>
+                    <p class="file-note">* Если фото не загружается, отправьте его на WhatsApp после заполнения формы</p>
+                    <div class="whatsapp-alternative">
+                        <p>Или отправьте фото в WhatsApp:</p>
+                        <a href="https://wa.me/79939665243?text=Здравствуйте! Отправляю фото для визуализации" class="whatsapp-link" target="_blank">📱 Отправить в WhatsApp</a>
                     </div>
                 </div>
                 
@@ -495,10 +540,12 @@
                     <textarea id="viz-comment" name="comment" placeholder="Особенности дома, пожелания..."></textarea>
                 </div>
                 
+                <input type="hidden" name="_subject" value="Новая заявка на визуализацию - Lumineux">
                 <button type="submit" class="submit-button">Получить визуализацию бесплатно</button>
             </form>
         </div>
     </section>
+
     <section class="contact-section" id="contact">
         <div class="contact-container">
             <h2 class="section-title">Консультация</h2>
@@ -537,6 +584,7 @@
                     <label for="comment">Комментарий</label>
                     <textarea id="comment" name="comment"></textarea>
                 </div>
+                <input type="hidden" name="_subject" value="Новая заявка на консультацию - Lumineux">
                 <button type="submit" class="submit-button">Отправить заявку</button>
             </form>
         </div>
@@ -588,7 +636,7 @@
 
         // Изменение имени файла при загрузке
         document.getElementById('photo').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name || 'Загрузите фото или сделайте снимок';
+            const fileName = e.target.files[0]?.name || 'Выберите фото (Камера или Галерея)';
             document.getElementById('fileLabel').innerHTML = '✓ ' + fileName;
         });
 
