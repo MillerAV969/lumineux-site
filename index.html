@@ -75,57 +75,25 @@
         .advantage p { font-size: 14px; color: var(--gray); }
         
         .visualizer-section { padding: 120px 50px; background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), url('bg-form.jpg') center/cover; position: relative; z-index: 2; }
-        .visualizer-form-container { max-width: 700px; margin: 0 auto; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(15px); padding: 60px 50px; border: 2px solid rgba(212, 175, 55, 0.2); }
+        .visualizer-form-container { max-width: 900px; margin: 0 auto; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(15px); padding: 60px 50px; border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 4px; }
+        
+        .google-form-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 30px;
+        }
+        
+        .google-form-wrapper iframe {
+            border-radius: 4px !important;
+            border: none !important;
+        }
+        
         .form-group { margin-bottom: 30px; }
         label { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
         input, select, textarea { width: 100%; padding: 18px 20px; background: rgba(15, 15, 15, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--white); font-size: 16px; font-family: 'Inter', sans-serif; transition: all 0.3s ease; }
         input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); background: rgba(15, 15, 15, 0.9); }
         textarea { resize: vertical; min-height: 140px; }
-        
-        .file-upload { position: relative; overflow: hidden; display: inline-block; width: 100%; }
-        .file-upload input[type=file] { position: absolute; left: -9999px; }
-        .file-upload-label { display: block; padding: 18px 20px; background: rgba(15, 15, 15, 0.8); border: 2px dashed rgba(212, 175, 55, 0.3); color: var(--gray); text-align: center; cursor: pointer; transition: all 0.3s ease; }
-        .file-upload-label:hover { border-color: var(--gold); color: var(--gold); }
-        .file-upload-label::before { content: "📸 "; font-size: 24px; display: block; margin-bottom: 10px; }
-        
-        .file-note {
-            font-size: 12px;
-            color: var(--gray);
-            margin-top: 10px;
-            font-style: italic;
-            text-align: center;
-        }
-        
-        .whatsapp-alternative {
-            background: rgba(37, 211, 102, 0.1);
-            border: 1px solid rgba(37, 211, 102, 0.3);
-            padding: 15px;
-            border-radius: 4px;
-            margin-top: 15px;
-            text-align: center;
-        }
-        
-        .whatsapp-alternative p {
-            color: var(--gray);
-            font-size: 13px;
-            margin-bottom: 10px;
-        }
-        
-        .whatsapp-link {
-            display: inline-block;
-            padding: 8px 20px;
-            background: #25D366;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 12px;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-link:hover {
-            background: #128C7E;
-            transform: translateY(-2px);
-        }
         
         .submit-button { width: 100%; padding: 22px; background: transparent; border: 2px solid var(--gold); color: var(--gold); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; font-family: 'Inter', sans-serif; }
         .submit-button:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); }
@@ -140,140 +108,6 @@
         .footer-contact a:hover { opacity: 0.7; }
         .footer-divider { width: 80px; height: 1px; background: var(--gold); margin: 40px auto; opacity: 0.3; }
         .footer-copy { font-size: 11px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
-        
-        /* НОВОГОДНИЙ УСПЕХ МОДАЛ */
-        .success-modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
-            left: 0; 
-            top: 0; 
-            width: 100%; 
-            height: 100%; 
-            background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
-            padding: 20px;
-            overflow: auto;
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        .success-modal.active { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .snowflakes-container {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-        }
-        
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: white;
-            font-size: 2em;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-        
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotateZ(360deg);
-            }
-        }
-        
-        .success-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            color: white;
-            max-width: 600px;
-            animation: slideUp 0.8s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .success-icon {
-            font-size: 120px;
-            margin-bottom: 30px;
-            animation: bounce 1s ease-in-out infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.1); }
-        }
-        
-        .success-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 5vw, 56px);
-            margin-bottom: 25px;
-            color: var(--gold);
-            text-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-        
-        .success-message {
-            font-size: clamp(16px, 2vw, 20px);
-            margin-bottom: 40px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .new-year-wishes {
-            font-size: clamp(20px, 3vw, 32px);
-            color: var(--gold);
-            margin: 40px 0;
-            font-style: italic;
-            text-shadow: 0 2px 10px rgba(212, 175, 55, 0.3);
-        }
-        
-        .festive-emoji {
-            font-size: 80px;
-            margin: 30px 0;
-            animation: sway 3s ease-in-out infinite;
-        }
-        
-        @keyframes sway {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-        }
-        
-        .close-success-btn {
-            margin-top: 50px;
-            padding: 15px 50px;
-            background: var(--gold);
-            border: none;
-            color: var(--dark);
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .close-success-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
         
         @media (max-width: 1024px) {
             .package { grid-template-columns: 1fr; gap: 40px; }
@@ -491,58 +325,20 @@
     <section class="visualizer-section" id="visualizer">
         <div class="visualizer-form-container">
             <h2 class="section-title" style="text-align: left; margin-bottom: 15px;">Примерьте оформление</h2>
-            <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Загрузите фото вашего дома и получите 3 варианта визуализации</p>
+            <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Загрузите фото вашего дома и получите визуализацию</p>
             
-            <form action="https://formspree.io/f/myzbnrpl" method="POST" onsubmit="handleFormSubmit(event)">
-                <div class="form-group">
-                    <label for="photo">Фото вашего дома (необязательно)</label>
-                    <div class="file-upload">
-                        <input type="file" id="photo" name="photo_link" accept="image/*">
-                        <label for="photo" class="file-upload-label" id="fileLabel">Выберите фото (Камера или Галерея)</label>
-                    </div>
-                    <p class="file-note">* Если фото не загружается, отправьте его на WhatsApp после заполнения формы</p>
-                    <div class="whatsapp-alternative">
-                        <p>Или отправьте фото в WhatsApp:</p>
-                        <a href="https://wa.me/79939665243?text=Здравствуйте! Отправляю фото для визуализации" class="whatsapp-link" target="_blank">📱 Отправить в WhatsApp</a>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="viz-name">Имя *</label>
-                    <input type="text" id="viz-name" name="name" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="viz-phone">Телефон *</label>
-                    <input type="tel" id="viz-phone" name="phone" value="+7" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="viz-email">Email *</label>
-                    <input type="email" id="viz-email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="viz-package">Интересующий пакет *</label>
-                    <select id="viz-package" name="package" required>
-                        <option value="">Выберите пакет</option>
-                        <option value="Базовый">Базовый (от 268 812 ₽)</option>
-                        <option value="Комфорт">Комфорт (от 550 000 ₽)</option>
-                        <option value="Премиум">Премиум (от 1 012 000 ₽)</option>
-                        <option value="Эксклюзив">Эксклюзив (от 2 150 500 ₽)</option>
-                        <option value="Только для избранных">Только для избранных (от 6 325 000 ₽)</option>
-                        <option value="Резиденция">Резиденция (от 12 650 000 ₽)</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="viz-comment">Комментарий</label>
-                    <textarea id="viz-comment" name="comment" placeholder="Особенности дома, пожелания..."></textarea>
-                </div>
-                
-                <input type="hidden" name="_subject" value="Новая заявка на визуализацию - Lumineux">
-                <button type="submit" class="submit-button">Получить визуализацию бесплатно</button>
-            </form>
+            <!-- ВСТРОЕННАЯ GOOGLE ФОРМА С ВАШЕЙ ССЫЛКОЙ -->
+            <div class="google-form-wrapper">
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSc5nrMYdPALLQkjarEEyIwNsW-rzr4QUEyRYGkf5_aoAHqRPg/viewform?embedded=true" 
+                    width="100%" 
+                    height="900" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0">
+                    Загрузка формы...
+                </iframe>
+            </div>
         </div>
     </section>
 
@@ -602,27 +398,6 @@
         </div>
     </footer>
 
-    <!-- НОВОГОДНИЙ МОДАЛ УСПЕХА -->
-    <div id="successModal" class="success-modal">
-        <div class="snowflakes-container" id="snowflakesContainer"></div>
-        <div class="success-content">
-            <div class="success-icon">🎄</div>
-            <h1 class="success-title">Спасибо за заявку!</h1>
-            <p class="success-message">
-                Ваша заявка успешно принята.<br>
-                Наша команда свяжется с вами в течение 2 часов.
-            </p>
-            <div class="new-year-wishes">
-                ✨ С наступающим Новым годом! ✨
-            </div>
-            <div class="festive-emoji">🎅 ⛄ 🎁</div>
-            <p class="success-message" style="margin-top: 30px;">
-                Пусть ваш дом сияет как звезда!
-            </p>
-            <button class="close-success-btn" onclick="closeSuccessModal()">Вернуться на сайт</button>
-        </div>
-    </div>
-
     <script>
         // Прокрутка заголовка
         window.addEventListener('scroll', function() {
@@ -634,34 +409,9 @@
             }
         });
 
-        // Изменение имени файла при загрузке
-        document.getElementById('photo').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name || 'Выберите фото (Камера или Галерея)';
-            document.getElementById('fileLabel').innerHTML = '✓ ' + fileName;
-        });
-
         // Выбор пакета
         function selectPackage(packageName) {
-            document.getElementById('viz-package').value = packageName;
-        }
-
-        // Генерация снежинок
-        function createSnowflakes() {
-            const container = document.getElementById('snowflakesContainer');
-            container.innerHTML = '';
-            const snowflakeCount = 50;
-            const snowflakeSymbols = ['❄', '❆', '❇', '*', '•'];
-
-            for (let i = 0; i < snowflakeCount; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.className = 'snowflake';
-                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
-                snowflake.style.left = Math.random() * 100 + '%';
-                snowflake.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                snowflake.style.animationDelay = Math.random() * 2 + 's';
-                snowflake.style.opacity = Math.random() * 0.5 + 0.3;
-                container.appendChild(snowflake);
-            }
+            document.getElementById('package').value = packageName;
         }
 
         // Обработка отправки формы
@@ -671,7 +421,6 @@
             const form = event.target;
             const formData = new FormData(form);
             
-            // Отправляем на Formspree
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
@@ -681,29 +430,16 @@
             })
             .then(response => {
                 if (response.ok) {
-                    showSuccessModal();
+                    alert('✅ Спасибо! Заявка отправлена. С наступающим Новым годом! 🎄');
                     form.reset();
                 } else {
-                    showSuccessModal();
+                    alert('Заявка отправлена!');
                 }
             })
             .catch(error => {
                 console.error('Ошибка:', error);
-                showSuccessModal();
+                alert('Заявка отправлена!');
             });
-        }
-
-        // Показать модал успеха
-        function showSuccessModal() {
-            const modal = document.getElementById('successModal');
-            modal.classList.add('active');
-            createSnowflakes();
-        }
-
-        // Закрыть модал успеха
-        function closeSuccessModal() {
-            const modal = document.getElementById('successModal');
-            modal.classList.remove('active');
         }
 
         // Плавная прокрутка якорей
