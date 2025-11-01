@@ -311,7 +311,7 @@
 
             <div class="package">
                 <div class="package-image-container">
-                    <img src="premium-package-v2.jpg" alt="Комфорт" class="package-image">
+                    <img src="comfort-package-final.jpg" alt="Комфорт" class="package-image">
                 </div>
                 <div class="package-content">
                     <span class="package-tag">Comfort</span>
@@ -455,9 +455,9 @@
             
             <form action="https://formspree.io/f/myzbnrpl" method="POST" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
-                    <label for="photo">Фото вашего дома *</label>
+                    <label for="photo">Фото вашего дома</label>
                     <div class="file-upload">
-                        <input type="file" id="photo" name="photo" accept="image/*" capture="environment">
+                        <input type="file" id="photo" name="attachment" accept="image/*" capture="environment">
                         <label for="photo" class="file-upload-label" id="fileLabel">Загрузите фото или сделайте снимок</label>
                     </div>
                 </div>
@@ -546,7 +546,7 @@
         <div class="footer-content">
             <div class="footer-contact">
                 <p><a href="tel:+79939665243">+7 (993) 966-52-43</a></p>
-                <p><a href="mailto:ip.miller.a.v@yandex.ru">ip.miller.a.v@yandex.ru</a></p>
+                <p><a href="mailto:sk-optima.stroy@mail.ru">sk-optima.stroy@mail.ru</a></p>
                 <p>9:00 — 21:00, без выходных</p>
             </div>
             <div class="footer-divider"></div>
@@ -636,12 +636,12 @@
                     showSuccessModal();
                     form.reset();
                 } else {
-                    showSuccessModal(); // Всё равно показываем успех
+                    showSuccessModal();
                 }
             })
             .catch(error => {
                 console.error('Ошибка:', error);
-                showSuccessModal(); // Всё равно показываем успех
+                showSuccessModal();
             });
         }
 
