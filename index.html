@@ -77,63 +77,93 @@
         .visualizer-section { padding: 120px 50px; background: linear-gradient(135deg, rgba(15, 15, 15, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%), url('bg-form.jpg') center/cover; position: relative; z-index: 2; }
         .visualizer-form-container { max-width: 900px; margin: 0 auto; background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(15px); padding: 60px 50px; border: 2px solid rgba(212, 175, 55, 0.2); border-radius: 4px; }
 
-        .whatsapp-section {
-            background: rgba(37, 211, 102, 0.1);
-            border: 2px solid rgba(37, 211, 102, 0.3);
-            padding: 50px;
+        .messaging-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .messaging-option {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 35px 25px;
             border-radius: 4px;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .whatsapp-icon {
-            font-size: 80px;
-            margin-bottom: 30px;
+        .messaging-option:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-2px);
         }
 
-        .whatsapp-title {
+        .messaging-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .messaging-title {
             color: var(--gold);
-            font-size: 28px;
+            font-size: 18px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             font-weight: 600;
         }
 
-        .whatsapp-text {
+        .messaging-text {
             color: var(--gray);
-            font-size: 16px;
-            margin-bottom: 30px;
-            line-height: 1.8;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-size: 14px;
+            margin-bottom: 18px;
+            line-height: 1.6;
         }
 
-        .whatsapp-button {
+        .messaging-button {
             display: inline-block;
-            padding: 18px 50px;
-            background: #25D366;
-            color: white;
+            padding: 12px 28px;
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--gold);
             text-decoration: none;
             border-radius: 4px;
-            font-size: 16px;
-            letter-spacing: 2px;
+            font-size: 13px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             transition: all 0.3s ease;
             font-weight: 600;
-            border: none;
             cursor: pointer;
         }
 
-        .whatsapp-button:hover {
-            background: #128C7E;
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
+        .messaging-button:hover {
+            background: var(--gold);
+            color: var(--dark);
+            transform: translateY(-2px);
         }
 
-        .whatsapp-button::before {
-            content: "📱 ";
-            margin-right: 10px;
+        .whatsapp-btn {
+            background: #25D366;
+            border-color: #25D366;
+            color: white;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            border-color: #128C7E;
+            color: white;
+        }
+
+        .telegram-btn {
+            background: #0088cc;
+            border-color: #0088cc;
+            color: white;
+        }
+
+        .telegram-btn:hover {
+            background: #0077b5;
+            border-color: #0077b5;
+            color: white;
         }
         
         .form-group { margin-bottom: 30px; }
@@ -159,6 +189,7 @@
         @media (max-width: 1024px) {
             .package { grid-template-columns: 1fr; gap: 40px; }
             .package:nth-child(even) .package-image-container, .package:nth-child(even) .package-content { order: initial; }
+            .messaging-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .header-content { padding: 0 25px; }
@@ -166,7 +197,7 @@
             .advantages-grid { grid-template-columns: 1fr; gap: 40px; }
             .visualizer-box { padding: 40px 25px; }
             .visualizer-form-container { padding: 40px 25px; }
-            .whatsapp-section { padding: 40px 25px; }
+            .messaging-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -178,7 +209,7 @@
     <header id="mainHeader">
         <div class="header-content">
             <div class="logo">Lumineux</div>
-            <a href="tel:+79939665243" class="header-phone">+7 (993) 966-52-43</a>
+            <a href="tel:+79959985243" class="header-phone">+7 (995) 998-52-43</a>
         </div>
     </header>
 
@@ -372,14 +403,25 @@
 
     <section class="visualizer-section" id="visualizer">
         <div class="visualizer-form-container">
-            <div class="whatsapp-section">
-                <div class="whatsapp-icon">📱</div>
-                <h2 class="whatsapp-title">Отправьте фото в WhatsApp</h2>
-                <p class="whatsapp-text">
-                    Загрузите фото вашего дома и свои контакты в WhatsApp.
-                    <br>Мы создадим 3 варианта визуализации оформления в течение 2-4 часов!
-                </p>
-                <a href="https://wa.me/79939665243?text=Здравствуйте! Хочу получить визуализацию оформления для моего дома" class="whatsapp-button" target="_blank">Написать в WhatsApp</a>
+            <h2 class="section-title" style="text-align: center; margin-bottom: 15px;">Примерьте оформление</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 30px;">Отправьте фото вашего дома</p>
+            
+            <div class="messaging-grid">
+                <!-- WHATSAPP -->
+                <div class="messaging-option">
+                    <div class="messaging-icon">💬</div>
+                    <h3 class="messaging-title">WhatsApp</h3>
+                    <p class="messaging-text">Отправьте фото в WhatsApp и получите визуализацию в течение 2-4 часов</p>
+                    <a href="https://wa.me/79959985243?text=Здравствуйте! Хочу получить визуализацию оформления для моего дома" class="messaging-button whatsapp-btn" target="_blank">Написать</a>
+                </div>
+
+                <!-- TELEGRAM -->
+                <div class="messaging-option">
+                    <div class="messaging-icon">✈️</div>
+                    <h3 class="messaging-title">Telegram</h3>
+                    <p class="messaging-text">Отправьте фото в Telegram и получите визуализацию в течение 2-4 часов</p>
+                    <a href="https://t.me/+79959985243?text=Здравствуйте! Хочу получить визуализацию оформления для моего дома" class="messaging-button telegram-btn" target="_blank">Написать</a>
+                </div>
             </div>
         </div>
     </section>
@@ -431,7 +473,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-contact">
-                <p><a href="tel:+79939665243">+7 (993) 966-52-43</a></p>
+                <p><a href="tel:+79959985243">+7 (995) 998-52-43</a></p>
                 <p><a href="mailto:sk-optima.stroy@mail.ru">sk-optima.stroy@mail.ru</a></p>
                 <p>9:00 — 21:00, без выходных</p>
             </div>
