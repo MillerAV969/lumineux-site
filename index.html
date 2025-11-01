@@ -88,6 +88,58 @@
             border-radius: 4px !important;
             border: none !important;
         }
+
+        .whatsapp-section {
+            background: rgba(37, 211, 102, 0.1);
+            border: 2px solid rgba(37, 211, 102, 0.3);
+            padding: 30px;
+            border-radius: 4px;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .whatsapp-title {
+            color: var(--gold);
+            font-size: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .whatsapp-text {
+            color: var(--gray);
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+
+        .whatsapp-button:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-button::before {
+            content: "📱 ";
+            margin-right: 10px;
+        }
         
         .form-group { margin-bottom: 30px; }
         label { display: block; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
@@ -327,7 +379,7 @@
             <h2 class="section-title" style="text-align: left; margin-bottom: 15px;">Примерьте оформление</h2>
             <p class="section-subtitle" style="text-align: left; margin-bottom: 40px;">Загрузите фото вашего дома и получите визуализацию</p>
             
-            <!-- ВСТРОЕННАЯ GOOGLE ФОРМА С ВАШЕЙ ССЫЛКОЙ -->
+            <!-- ВСТРОЕННАЯ GOOGLE ФОРМА -->
             <div class="google-form-wrapper">
                 <iframe 
                     src="https://docs.google.com/forms/d/e/1FAIpQLSc5nrMYdPALLQkjarEEyIwNsW-rzr4QUEyRYGkf5_aoAHqRPg/viewform?embedded=true" 
@@ -338,6 +390,13 @@
                     marginwidth="0">
                     Загрузка формы...
                 </iframe>
+            </div>
+
+            <!-- WHATSAPP АЛЬТЕРНАТИВА -->
+            <div class="whatsapp-section">
+                <div class="whatsapp-title">Или отправьте фото в WhatsApp</div>
+                <p class="whatsapp-text">Если форма не загружается, отправьте фото вашего дома и ваши контакты в WhatsApp</p>
+                <a href="https://wa.me/79939665243?text=Здравствуйте! Хочу получить визуализацию оформления для моего дома" class="whatsapp-button" target="_blank">Написать в WhatsApp</a>
             </div>
         </div>
     </section>
