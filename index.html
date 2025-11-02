@@ -181,7 +181,7 @@
         footer { padding: 80px 50px; background: rgba(15, 15, 15, 0.98); text-align: center; border-top: 1px solid rgba(212, 175, 55, 0.1); }
         .footer-content { max-width: 600px; margin: 0 auto; }
         .footer-contact p { font-size: 16px; color: var(--gray); margin-bottom: 12px; }
-        .footer-contact a { color: var(--gold); text-decoration: none; transition: opacity 0.3s ease; }
+        .footer-contact a { color: var(--gold); text-decoration: none; transition: opacity 0.3s ease; cursor: pointer; }
         .footer-contact a:hover { opacity: 0.7; }
         .footer-divider { width: 80px; height: 1px; background: var(--gold); margin: 40px auto; opacity: 0.3; }
         .footer-copy { font-size: 11px; color: var(--gray); letter-spacing: 2px; text-transform: uppercase; }
@@ -431,7 +431,7 @@
             <h2 class="section-title">Консультация</h2>
             <p class="section-subtitle">Оставьте заявку и получите индивидуальное предложение</p>
             
-            <form action="https://formspree.io/f/xyzawnwv" method="POST" onsubmit="handleFormSubmit(event)">
+            <form id="consultationForm" onsubmit="handleFormSubmit(event)">
                 <div class="form-group">
                     <label for="name">Имя *</label>
                     <input type="text" id="name" name="name" required>
@@ -464,7 +464,6 @@
                     <label for="comment">Комментарий</label>
                     <textarea id="comment" name="comment"></textarea>
                 </div>
-                <input type="hidden" name="_subject" value="Новая заявка на консультацию - Lumineux">
                 <button type="submit" class="submit-button">Отправить заявку</button>
             </form>
         </div>
@@ -474,7 +473,7 @@
         <div class="footer-content">
             <div class="footer-contact">
                 <p><a href="tel:+79959985243">+7 (995) 998-52-43</a></p>
-                <p><a href="mailto:sk-optima.stroy@mail.ru">sk-optima.stroy@mail.ru</a></p>
+                <p><a href="javascript:openEmailClient()">sk-optima.stroy@mail.ru</a></p>
                 <p>9:00 — 21:00, без выходных</p>
             </div>
             <div class="footer-divider"></div>
@@ -483,6 +482,15 @@
     </footer>
 
     <script>
+        // Функция для открытия почтового клиента с готовым сообщением
+        function openEmailClient() {
+            const email = 'sk-optima.stroy@mail.ru';
+            const subject = encodeURIComponent('Запрос информации о визуализации - Lumineux');
+            const body = encodeURIComponent('Здравствуйте!\n\nХочу получить визуализацию оформления для моего дома.\n\nС уважением');
+            
+            window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        }
+
         // Прокрутка заголовка
         window.addEventListener('scroll', function() {
             const header = document.getElementById('mainHeader');
@@ -507,27 +515,32 @@
             event.preventDefault();
             
             const form = event.target;
-            const formData = new FormData(form);
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const packageName = document.getElementById('package').value;
+            const comment = document.getElementById('comment').value;
+
+            // Формируем текст письма
+            const mailtoBody = encodeURIComponent(
+                `Новая заявка на консультацию:\n\n` +
+                `Имя: ${name}\n` +
+                `Телефон: ${phone}\n` +
+                `Email: ${email}\n` +
+                `Адрес объекта: ${address || 'не указан'}\n` +
+                `Интересующая коллекция: ${packageName}\n` +
+                `Комментарий: ${comment || 'нет'}\n`
+            );
+
+            // Отправляем на почту через mailto
+            window.location.href = `mailto:sk-optima.stroy@mail.ru?subject=Новая заявка - Lumineux&body=${mailtoBody}`;
+
+            // Показываем сообщение
+            alert('✅ Спасибо! Письмо отправляется на почту. Если почта не открыла, напишите нам в WhatsApp или Telegram.');
             
-            fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('✅ Спасибо! Заявка отправлена. С наступающим Новым годом! 🎄');
-                    form.reset();
-                } else {
-                    alert('Заявка отправлена!');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Заявка отправлена!');
-            });
+            // Очищаем форму
+            form.reset();
         }
 
         // Плавная прокрутка якорей
