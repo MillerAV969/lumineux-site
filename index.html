@@ -24,7 +24,8 @@
     .hero { min-height: 100vh; display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient(180deg, rgba(15,15,15,0.7) 0%, rgba(26,26,26,0.8) 100%), url('bg-hero.jpg') center/cover; padding:120px 20px 80px; position: relative; z-index: 2; }
     .hero h1 { font-size:clamp(36px,6vw,72px); margin-bottom:30px; line-height:1.2; text-shadow:0 4px 20px rgba(0,0,0,0.7); color: var(--gold); }
     .hero p { font-size:clamp(16px,2vw,24px); color:var(--gray); margin-bottom:50px; letter-spacing:1px; text-shadow:0 2px 10px rgba(0,0,0,0.7); }
-    .cta { display:inline-block; padding:20px 60px; border:2px solid var(--gold); color:var(--gold); font-size:14px; letter-spacing:3px; text-transform:uppercase; text-decoration:none; transition:all 0.4s ease; font-weight:500; }
+    1500
+	  display:inline-block; padding:20px 60px; border:2px solid var(--gold); color:var(--gold); font-size:14px; letter-spacing:3px; text-transform:uppercase; text-decoration:none; transition:all 0.4s ease; font-weight:500; }
     .cta:hover { background:var(--gold); color:var(--dark); transform: translateY(-3px); box-shadow:0 10px 30px rgba(212,175,55,0.3); }
     .visualizer { padding:80px 50px; background:linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(15,15,15,0.85) 100%), url('bg-visualizer.jpg') center/cover; position:relative; z-index:2; border-top:1px solid rgba(212,175,55,0.1); border-bottom:1px solid rgba(212,175,55,0.1); }
     .visualizer-box { max-width:900px; margin:0 auto; text-align:center; padding:60px 40px; border:2px solid rgba(212,175,55,0.2); background:rgba(26,26,26,0.7); backdrop-filter:blur(10px); }
@@ -35,7 +36,8 @@
     .visualizer-features li { font-size:16px; color:var(--gray); margin:12px 0; }
     .visualizer-features li::before { content:\"✅ \"; margin-right:10px; color:var(--gold); }
     .visualizer-note { font-size:14px; color:var(--gray); font-style:italic; margin-top:20px; }
-  </style>
+  149
+	  
   <style>
     .packages { padding:120px 50px; background:linear-gradient(135deg, rgba(15,15,15,0.8) 0%, rgba(26,26,26,0.8) 100%), url('bg-packages.jpg') center/cover; background-attachment:fixed; position:relative; z-index:2; }
     .section-title { font-size:clamp(36px,5vw,54px); margin-bottom:20px; text-align:center; color:var(--gold); }
@@ -68,7 +70,12 @@
     .g-item p { font-size:14px; color:var(--gray); }
         .products { padding:80px 50px; background:linear-gradient(135deg, rgba(15,15,15,0.9) 0%, rgba(26,26,26,0.9) 100%); position:relative; z-index:2; }
     .products-container { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:40px; }
-    .product-card { background:rgba(26,26,26,0.6); border:1px solid rgba(212,175,55,0.2); border-radius:8px; overflow:hidden; transition:all 0.3s; }
+	  
+    150
+	  .product-card, .product-card * { min-height: auto !important; width: 100% !important; padding-left: 0 !important; padding-right: 0 !important; }
+.products-container > * { display: flex !important; flex-direction: column !important; min-height: 400px !important; }
+	  
+	  background:rgba(26,26,26,0.6); border:1px solid rgba(212,175,55,0.2); border-radius:8px; overflow:hidden; transition:all 0.3s; }
     .product-card:hover { border-color:var(--gold); transform:translateY(-5px); box-shadow:0 10px 30px rgba(212,175,55,0.2); }
     .product-image { aspect-ratio:1; overflow:hidden; background:rgba(212,175,55,0.1); display:flex; align-items:center; justify-content:center; }
     .product-info { padding:30px 25px; }
@@ -144,7 +151,8 @@
     <p class="section-subtitle">Профессиональные материалы для оформления</p>
     <div class="products-container">
       <div class="product-card">
-        <div class="product-image" style="background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%); padding: 40px; text-align: center; font-size: 80px;">💡</div>
+        <div class="74
+			,0.2) 0%, rgba(212,175,55,0.05) 100%); padding: 40px; text-align: center; font-size: 80px;">💡</div>
         <div class="product-info">
           <h3 class="product-name">Гирлянда Бахрома тёплая</h3>
           <div class="product-specs">Размер: 3x0.5 м • 112 LED</div>
@@ -161,7 +169,8 @@
 				<button class="product-btn" onclick="openModal('productModal1')">Подробнее</button>
         </div>
               <div class="product-card">
-        <div class="product-image" style="background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, rgba(212,175,55,0.05) 100%); padding: 40px; text-align: center; font-size: 80px;">❄️</div>
+        <div class="73
+			,0.2) 0%, rgba(212,175,55,0.05) 100%); padding: 40px; text-align: center; font-size: 80px;">❄️</div>
         <div class="product-info">
           <h3 class="product-name">Гирлянда Бахрома белая</h3>
           <div class="product-specs">Размер: 3x0.5 м • 112 LED</div>
@@ -532,7 +541,8 @@
   .modal-info ul { list-style: none; padding: 0; }
   .modal-info li { padding: 5px 0; color: var(--gray); font-size: 13px; }
   .modal-info li:before { content: "✓ "; color: var(--gold); margin-right: 8px; }
- </style>
+ 148
+	 
 
  <!-- Product Modals -->
  <!-- Modal 1: Garland Bakhroma Warm -->
@@ -744,6 +754,7 @@
  </script>
 </body>
 </html>
+
 
 
 
