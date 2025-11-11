@@ -467,8 +467,198 @@
       });
     });
   </script>
+   <!-- Modal Styles -->
+ <style>
+  .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); animation: fadeIn 0.3s ease-in; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal-content { background: linear-gradient(135deg, rgba(15,15,15,0.95) 0%, rgba(26,26,26,0.95) 100%); margin: 5% auto; padding: 30px; border: 2px solid rgba(212,175,55,0.3); border-radius: 8px; max-width: 800px; max-height: 85vh; overflow-y: auto; animation: slideDown 0.3s ease-out; }
+  @keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-close { color: var(--gold); float: right; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.3s; }
+  .modal-close:hover { color: #fff; }
+  .modal-title { font-size: 28px; color: var(--gold); margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+  .modal-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+  .modal-spec-item { background: rgba(212,175,55,0.1); padding: 15px; border-radius: 4px; border-left: 3px solid var(--gold); }
+  .modal-spec-label { font-size: 12px; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+  .modal-spec-value { font-size: 18px; color: var(--white); margin-top: 5px; font-weight: 600; }
+  .modal-description { color: var(--gray); line-height: 1.8; margin: 20px 0; font-size: 14px; }
+  .modal-info { background: rgba(212,175,55,0.08); padding: 20px; border-radius: 4px; margin: 20px 0; }
+  .modal-info h4 { color: var(--gold); margin-bottom: 10px; font-size: 16px; }
+  .modal-info ul { list-style: none; padding: 0; }
+  .modal-info li { padding: 5px 0; color: var(--gray); font-size: 13px; }
+  .modal-info li:before { content: "✓ "; color: var(--gold); margin-right: 8px; }
+ </style>
+
+ <!-- Product Modals -->
+ <!-- Modal 1: Garland Bakhroma Warm -->
+ <div id="productModal1" class="modal">
+  <div class="modal-content">
+   <span class="modal-close" onclick="closeModal('productModal1')">&times;</span>
+   <h2 class="modal-title">💡 Гирлянда Бахрома тёплая</h2>
+   <div class="modal-specs">
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Размер</div>
+     <div class="modal-spec-value">3 x 0.5 м</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">LED</div>
+     <div class="modal-spec-value">112 шт</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Цвет</div>
+     <div class="modal-spec-value">Тёплый белый</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Длина кабеля</div>
+     <div class="modal-spec-value">5 м</div>
+    </div>
+   </div>
+   <p class="modal-description">
+    Стильная гирлянда "Бахрома" выполняет роль отличного украшения фасада дома. Её эффектные каскадом свисающие нити создают впечатление праздничного убранства. Используется для украшения крыш, окон, балконов и других открытых пространств.
+   </p>
+   <div class="modal-info">
+    <h4>Преимущества:</h4>
+    <ul>
+     <li>Прочный и долговечный корпус</li>
+     <li>Защита от влаги и снега (IP65)</li>
+     <li>Работает в диапазоне температур от -40 до +60°C</li>
+     <li>Низкое энергопотребление LED</li>
+     <li>Легко монтируется на любые поверхности</li>
+    </ul>
+   </div>
+   <p class="modal-description"><strong>Стоимость:</strong> 5 240 ₽/м • Монтаж: 1 300 ₽/м</p>
+  </div>
+ </div>
+
+ <!-- Modal 2: Garland Bakhroma White -->
+ <div id="productModal2" class="modal">
+  <div class="modal-content">
+   <span class="modal-close" onclick="closeModal('productModal2')">&times;</span>
+   <h2 class="modal-title">❄️ Гирлянда Бахрома белая</h2>
+   <div class="modal-specs">
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Размер</div>
+     <div class="modal-spec-value">3 x 0.5 м</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">LED</div>
+     <div class="modal-spec-value">112 шт</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Цвет</div>
+     <div class="modal-spec-value">Холодный белый</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Длина кабеля</div>
+     <div class="modal-spec-value">5 м</div>
+    </div>
+   </div>
+   <p class="modal-description">
+    Классическая гирлянда "Бахрома" с холодным белым свечением. Идеальна для создания морозного, ледяного эффекта в новогоднем оформлении. Каскад свисающих нитей с LED придаст вашему фасаду праздничный и сказочный вид.
+   </p>
+   <div class="modal-info">
+    <h4>Технические характеристики:</h4>
+    <ul>
+     <li>Спектр свечения: холодный белый</li>
+     <li>Класс защиты: IP65 (влагостойкая)</li>
+     <li>Диаметр гирлянды: 8 мм</li>
+     <li>Гарантия: 1 год</li>
+     <li>Совместимость с контроллерами для динамических эффектов</li>
+    </ul>
+   </div>
+   <p class="modal-description"><strong>Стоимость:</strong> 5 240 ₽/м • Монтаж: 1 300 ₽/м</p>
+  </div>
+ </div>
+
+ <!-- Modal 3: LED Duralight Warm -->
+ <div id="productModal3" class="modal">
+  <div class="modal-content">
+   <span class="modal-close" onclick="closeModal('productModal3')">&times;</span>
+   <h2 class="modal-title">🌟 Светодиодный Дюралайт тёплый</h2>
+   <div class="modal-specs">
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Размер</div>
+     <div class="modal-spec-value">10 м</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">LED</div>
+     <div class="modal-spec-value">360 шт</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Цвет</div>
+     <div class="modal-spec-value">Тёплый белый</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Диаметр</div>
+     <div class="modal-spec-value">13 мм</div>
+    </div>
+   </div>
+   <p class="modal-description">
+    Профессиональный светодиодный дюралайт - плотный светящийся жгут для архитектурной подсветки фасадов. Обеспечивает 360-градусное свечение, видимое со всех сторон. Идеален для контурного оформления зданий, крыш и деревьев с однородным мягким свечением.
+   </p>
+   <div class="modal-info">
+    <h4>Особенности дюралайта:</h4>
+    <ul>
+     <li>Угол свечения: 360 градусов</li>
+     <li>Класс защиты: IP65</li>
+     <li>Рабочее напряжение: 220В переменного тока</li>
+     <li>Рабочий диапазон: -40°C до +60°C</li>
+     <li>Срок службы: 7 лет</li>
+     <li>Режимы: статика, мерцание, динамика</li>
+    </ul>
+   </div>
+   <p class="modal-description"><strong>Стоимость:</strong> 8 280 ₽/м • Монтаж: 1 200 ₽/м</p>
+  </div>
+ </div>
+
+ <!-- Modal 4: LED Duralight White -->
+ <div id="productModal4" class="modal">
+  <div class="modal-content">
+   <span class="modal-close" onclick="closeModal('productModal4')">&times;</span>
+   <h2 class="modal-title">⚪ Светодиодный Дюралайт белый</h2>
+   <div class="modal-specs">
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Размер</div>
+     <div class="modal-spec-value">10 м</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">LED</div>
+     <div class="modal-spec-value">360 шт</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Цвет</div>
+     <div class="modal-spec-value">Холодный белый</div>
+    </div>
+    <div class="modal-spec-item">
+     <div class="modal-spec-label">Диаметр</div>
+     <div class="modal-spec-value">13 мм</div>
+    </div>
+   </div>
+   <p class="modal-description">
+    Дюралайт с холодным белым свечением для создания ледяного эффекта в праздничном оформлении. Плотный светящийся жгут обеспечивает равномерное 360-градусное освещение, идеален для контурного оформления архитектурных элементов здания.
+   </p>
+   <div class="modal-info">
+    <h4>Применение:</h4>
+    <ul>
+     <li>Контурное оформление фасадов и крыш</li>
+     <li>Подсветка наружных элементов здания</li>
+     <li>Оформление деревьев и кустарников</li>
+     <li>Декорирование парков и общественных пространств</li>
+     <li>Архитектурное освещение</li>
+    </ul>
+   </div>
+   <p class="modal-description"><strong>Стоимость:</strong> 8 280 ₽/м • Монтаж: 1 200 ₽/м</p>
+  </div>
+ </div>
+
+ <!-- JavaScript Functions -->
+ <script>
+  function openModal(modalId) { document.getElementById(modalId).style.display = 'block'; document.body.style.overflow = 'hidden'; }
+  function closeModal(modalId) { document.getElementById(modalId).style.display = 'none'; document.body.style.overflow = 'auto'; }
+  window.onclick = function(event) { if (event.target.classList.contains('modal')) { event.target.style.display = 'none'; document.body.style.overflow = 'auto'; } }
+ </script>
 </body>
 </html>
+
 
 
 
