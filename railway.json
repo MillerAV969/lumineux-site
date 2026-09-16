@@ -1,9 +1,9 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "deploy": {
-    "startCommand": "node -e \"const http=require('http');const p=Number(process.env.PORT||3000);const s=http.createServer((q,r)=>{r.statusCode=200;r.end('disabled');});s.listen(p,()=>setTimeout(()=>s.close(()=>process.exit(0)),60000));\"",
-    "healthcheckPath": "/",
+    "startCommand": "node server.js",
+    "healthcheckPath": "/health",
     "healthcheckTimeout": 30,
-    "restartPolicyType": "NEVER"
+    "restartPolicyType": "ALWAYS"
   }
 }
