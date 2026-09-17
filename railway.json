@@ -1,9 +1,10 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "deploy": {
-    "startCommand": "node server.js",
+    "startCommand": "sh -lc 'if [ \"$DISABLE_RUNTIME\" = \"1\" ]; then node -e \"const http=require(\\\"http\\\");const p=Number(process.env.PORT||3000);const s=http.createServer((q,r)=>{r.statusCode=200;r.end(\\\"disabled\\\");});s.listen(p,()=>setTimeout(()=>s.close(()=>process.exit(0)),60000));\"; else exec node server.js; fi'",
     "healthcheckPath": "/health",
     "healthcheckTimeout": 30,
-    "restartPolicyType": "ALWAYS"
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 5
   }
 }
